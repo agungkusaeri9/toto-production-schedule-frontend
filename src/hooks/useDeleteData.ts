@@ -11,7 +11,7 @@ export const useDeleteData = <TResponse>(
   return useMutation({
     mutationFn: deleteFunction,
     onSuccess: (response) => {
-      toast.success((response as { message: string }).message); // bisa ketatkan jika tahu strukturnya
+      // toast.success((response as { message: string }).message); // bisa ketatkan jika tahu strukturnya
       queryClient.invalidateQueries({ queryKey });
     },
     onError: (error) => {

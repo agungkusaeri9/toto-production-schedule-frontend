@@ -4,7 +4,7 @@ import Button from '@/components/ui/button/Button'
 import React from 'react'
 import { useFetchData } from '@/hooks/useFetchData'
 import MachineService from '@/services/MachineService'
-import AreaService from '@/services/AreaService'
+import AreaService from '@/services/CustomerService'
 import RackService from '@/services/RackService'
 import { Machine } from '@/types/machine'
 import { Area } from '@/types/area'
@@ -19,22 +19,22 @@ interface FilterFormData {
     rack_id: { value: number; label: string } | null;
 }
 
-const FilterKanban = ({ 
-    filter, 
-    setFilter 
-}: { 
-    filter: { 
-        machine_id: number | null, 
-        machine_area_id: number | null, 
+const FilterKanban = ({
+    filter,
+    setFilter
+}: {
+    filter: {
+        machine_id: number | null,
+        machine_area_id: number | null,
         rack_id: number | null,
-        keyword: string 
-    }, 
-    setFilter: (filter: { 
-        machine_id: number | null, 
-        machine_area_id: number | null, 
+        keyword: string
+    },
+    setFilter: (filter: {
+        machine_id: number | null,
+        machine_area_id: number | null,
         rack_id: number | null,
-        keyword: string 
-    }) => void 
+        keyword: string
+    }) => void
 }) => {
     const { register, handleSubmit, reset, control } = useForm<FilterFormData>({
         defaultValues: {
@@ -50,21 +50,21 @@ const FilterKanban = ({
     const { data: racks } = useFetchData(RackService.getWithoutPagination, "racks", false);
 
     const onSubmit = (data: FilterFormData) => {
-        setFilter({ 
-            machine_id: data.machine_id?.value || null, 
-            machine_area_id: data.machine_area_id?.value || null,  
+        setFilter({
+            machine_id: data.machine_id?.value || null,
+            machine_area_id: data.machine_area_id?.value || null,
             rack_id: data.rack_id?.value || null,
-            keyword: data.keyword 
+            keyword: data.keyword
         });
     };
 
     const handleReset = () => {
         reset();
-        setFilter({ 
-            machine_id: null, 
-            machine_area_id: null, 
+        setFilter({
+            machine_id: null,
+            machine_area_id: null,
             rack_id: null,
-            keyword: "" 
+            keyword: ""
         });
     };
 
@@ -81,7 +81,7 @@ const FilterKanban = ({
                             register={register("keyword")}
                         />
                         {machines && (
-                             <FormSelect2
+                            <FormSelect2
                                 label="Machine"
                                 name="machine_id"
                                 control={control}
@@ -93,7 +93,7 @@ const FilterKanban = ({
                             />
                         )}
                         {machineAreas && (
-                             <FormSelect2
+                            <FormSelect2
                                 label="Area"
                                 name="machine_area_id"
                                 control={control}

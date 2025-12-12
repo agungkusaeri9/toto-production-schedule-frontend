@@ -15,7 +15,7 @@ import { useForm } from 'react-hook-form';
 import TextAreaLabel from '@/components/form/FormTextArea';
 import { Machine } from '@/types/machine';
 import MachineService from '@/services/MachineService';
-import AreaService from '@/services/AreaService';
+import AreaService from '@/services/CustomerService';
 import { Area } from '@/types/area';
 import { z } from 'zod';
 import Loading from '@/components/common/Loading';

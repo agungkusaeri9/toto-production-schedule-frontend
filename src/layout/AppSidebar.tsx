@@ -12,6 +12,9 @@ import {
   PurchaseRequestIcon,
 } from "../icons/index";
 import { getCookie } from "cookies-next";
+import { CalendarDays, DatabaseZap, FolderTree, ListTree } from "lucide-react";
+import { useFetchData } from "@/hooks/useFetchData";
+import ProcessService from "@/services/ProcessService";
 type NavItem = {
   name: string;
   icon: React.ReactNode;
@@ -44,64 +47,61 @@ const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const pathname = usePathname();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // const { data: remindersCount } = useQuery({
-  //   queryKey: ["reminders-count"],
-  //   queryFn: ReminderService.getCount,
-  //   staleTime: 240000,
-  //   gcTime: 360000,
-  //   refetchInterval: 300000,
-  // });
-  // const { data: uncompletedKanbansCount } = useQuery({
-  //   queryKey: ["uncompleted-kanbans-count"],
-  //   queryFn: async () => {
-  //     const response = await KanbanService.getUncompletedCount();
-  //     return response.pagination.total;
-  //   },
-  //   staleTime: 240000,
-  //   gcTime: 360000,
-  //   refetchInterval: 300000,
-  // });
+
+  const { data: processes } = useFetchData(ProcessService.getWithoutPagination, "processes");
 
 
   const navItems: NavItem[] = [
     {
       icon: <GridIcon />,
       name: "Dashboard",
-      path: "/dashboard",
-      requiresAuth: false,
-      roles: ["ppc", "p3", "admin"],
+      subItems: [
+        { name: "Summary", path: "/dashboard", pro: false },
+        { name: "Timeline", path: "/timelines", pro: false },
+        { name: "Timeline Schedule", path: "/timeline-schedules", pro: false },
+      ],
+      requiresAuth: true,
+      roles: ["admin"],
+    },
+    {
+      icon: <GridIcon />,
+      name: "Timelines By Process",
+      path: "/timeline-process",
+      requiresAuth: true,
+      roles: ["admin"],
+    },
+    {
+      icon: <CalendarDays />,
+      name: "Daily Schedule",
+      path: "/daily-schedule",
+      requiresAuth: true,
+      roles: ["admin"],
     },
 
     {
-      icon: <PurchaseRequestIcon />,
-      name: "Request Schedule",
-      path: "/request-schedules",
-      requiresAuth: false,
-      roles: ["ppc", "admin"],
-    },
-    {
-      icon: <PurchaseRequestIcon />,
-      name: "Schedule",
+      icon: <CalendarDays />,
+      name: "Schedules",
       path: "/schedules",
       requiresAuth: false,
-      roles: ["p3", "admin"],
+      roles: ["admin"],
     },
     {
-      icon: <PurchaseRequestIcon />,
-      name: "Timeline Schedule",
-      path: "/timeline-schedules",
+      icon: <ListTree />,
+      name: "Process List",
+      path: "/process-list-master",
       requiresAuth: false,
-      roles: ["p3", "admin"],
+      roles: ["admin"],
     },
     {
-      icon: <DatabaseIcon />,
+      icon: <FolderTree />,
       name: "Master Data",
       subItems: [
+        { name: "Process", path: "/processes", pro: false },
+        { name: "Customer", path: "/customers", pro: false },
+        { name: "Parts", path: "/parts", pro: false },
         { name: "User", path: "/users", pro: false },
-        { name: "Machine", path: "/mc", pro: false },
-        { name: "Shift", path: "/shift", pro: false },
-        { name: "Material", path: "/materials", pro: false },
-        { name: "Product", path: "/products", pro: false },
+        { name: "Settings", path: "/setting", pro: false }
+
       ],
       requiresAuth: true,
       roles: ["admin"],

@@ -4,67 +4,49 @@ import ButtonLink from "@/components/ui/button/ButtonLink";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import DataTable from "@/components/common/DataTable";
 import Loading from "@/components/common/Loading";
-import requestSchedules from '@/data/request-schedule.json';
 import { dateFormat } from "@/utils/dateFormat";
+import Button from "@/components/ui/button/Button";
+import { confirmDelete } from "@/utils/confirm";
+import toast from "react-hot-toast";
+import { numberFormat } from "@/utils/numberFormat";
+import { useFetchData } from "@/hooks/useFetchData";
+import ScheduleService from "@/services/ScheduleService";
+import { useDeleteData } from "@/hooks/useDeleteData";
 
 
 function OperatorListContent() {
-
+    const { data: schedules } = useFetchData(ScheduleService.get, "schedules");
+    const { mutate: deleteSchedule, isPending } = useDeleteData(ScheduleService.remove, ["schedules"]);
+    const handleDelete = (id: number) => deleteSchedule(id, {
+        onSuccess: () => {
+            toast.success("Schedule deleted successfully.");
+        }
+    });
     const columns = [
         {
-            header: "Start Date",
-            accessorKey: "startDate",
-            cell: (item: { startDate: string }) => dateFormat(item.startDate, "DD-MM-YYYY"),
+            header: "#",
+            accessorKey: "id",
+            cell: (item: { id: number }) => item.id,
         },
         {
-            header: "End Date",
-            accessorKey: "endDate",
-            cell: (item: { endDate: string }) => dateFormat(item.endDate, "DD-MM-YYYY"),
+            header: "Part",
+            accessorKey: "part.name",
+            cell: (item: { part: any }) => item?.part?.name || '-',
         },
+        // {
+        //     header: "Month",
+        //     accessorKey: "month.name",
+        //     cell: (item: { month: any }) => item?.month,
+        // },
+        // {
+        //     header: "Year",
+        //     accessorKey: "year.name",
+        //     cell: (item: { year: any }) => item?.year?.name || '-',
+        // },
         {
-            header: "Code",
-            accessorKey: "code",
-        },
-
-        {
-            header: "Products",
-            accessorKey: "products",
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            cell: (item: any) => (
-                <>
-                    <ul>
-                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                        {item.products.map((product: any) => (
-                            <li className="text-sm text-white text-left bg-gray-800 px-2 mb-1 rounded flex justify-between" key={product.id}>
-                                <span className="w-2/4">
-                                    Name : {product.name}
-                                </span>
-                                <span className="w-1/4">Qty : {product.quantity}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </>
-            )
-        },
-        {
-            header: "Created At",
-            accessorKey: "createdAt",
-            cell: (item: { createdAt: string }) => dateFormat(item.createdAt, "DD-MM-YYYY"),
-        },
-        {
-            header: "Created By",
-            accessorKey: "createdBy",
-        },
-        {
-            header: "Status",
-            accessorKey: "status",
-            cell: (item: { status: string }) => {
-                if (item.status === "completed") {
-                    return <span className="bg-green-600 px-2 py-1 text-white rounded">Completed</span>
-                } else {
-                    return <span className="bg-yellow-600 px-2 py-1 text-white rounded">Pending</span>
-                }
-            },
+            header: "Quantity",
+            accessorKey: "quantity",
+            cell: (item: { quantity: number }) => numberFormat(item.quantity) || '-',
         },
         {
             header: "Action",
@@ -77,30 +59,44 @@ function OperatorListContent() {
                         variant='warning'
                         size='xs'
                     >
-                        Detail
+                        Show
                     </ButtonLink>
-                    <ButtonLink
-                        href={`/schedules/${item.id}/process`}
+                    {/* <ButtonLink
+                        href={`/schedules/${item.id}/edit`}
                         variant='info'
                         size='xs'
-                        disabled={item.status === "pending" ? false : true}
                     >
-                        Process
-                    </ButtonLink>
+                        Edit
+                    </ButtonLink> */}
+                    <Button
+                        onClick={() => handleDelete(item.id)}
+                        variant='danger'
+                        size='xs'
+                        disabled={isPending}
+                        loading={isPending}
+                    >
+                        Delete
+                    </Button>
                 </div >
             ),
         },
     ];
 
+    if (!schedules) {
+        return <Loading />;
+    }
+
     return (
         <div>
             <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Schedules', href: '/schedules' }]} />
             <div className="space-y-6">
-
+                <div className="flex justify-end mb-4">
+                    <ButtonLink size='sm' href="/schedules/create">Create Schedule</ButtonLink>
+                </div>
                 <DataTable
-                    title="Schedule List"
+                    title="Schedules"
                     columns={columns}
-                    data={requestSchedules || []}
+                    data={schedules || []}
                     isLoading={false}
                     pagination={{
                         currentPage: 1,

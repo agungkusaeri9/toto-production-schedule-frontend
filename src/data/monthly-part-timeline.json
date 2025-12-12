@@ -1,0 +1,307 @@
+{
+  "year": 2025,
+  "data": [
+    {
+      "partName": "KOYAMA 1S7-E5671-00 WHELL RATCHET",
+      "customerName": "PT. Astra Otoparts Tbk",
+      "quantity": 100000,
+      "periods": [
+        {
+          "startDate": "2025-01-05T00:00:00",
+          "finishDate": "2025-02-05T00:00:00"
+        },
+        {
+          "startDate": "2025-06-10T00:00:00",
+          "finishDate": "2025-07-10T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "YAMATO 2S1-A1111-00 LEVER SET",
+      "customerName": "PT. XYZ Parts Indonesia",
+      "quantity": 110000,
+      "periods": [
+        {
+          "startDate": "2025-01-20T00:00:00",
+          "finishDate": "2025-02-20T00:00:00"
+        },
+        {
+          "startDate": "2025-08-01T00:00:00",
+          "finishDate": "2025-09-01T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "SUZUKI 9Z9-B2222-00 GEAR HUB",
+      "customerName": "PT. Nusantara Motor",
+      "quantity": 120000,
+      "periods": [
+        {
+          "startDate": "2025-02-01T00:00:00",
+          "finishDate": "2025-03-01T00:00:00"
+        },
+        {
+          "startDate": "2025-09-10T00:00:00",
+          "finishDate": "2025-10-10T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "HONDA 1A1-E3333-02 CLUTCH RING",
+      "customerName": "PT. Honda Precision Parts",
+      "quantity": 90000,
+      "periods": [
+        {
+          "startDate": "2025-02-15T00:00:00",
+          "finishDate": "2025-03-15T00:00:00"
+        },
+        {
+          "startDate": "2025-05-01T00:00:00",
+          "finishDate": "2025-06-01T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "KAWASAKI 9Q1-B9980-40 ENGINE LINK",
+      "customerName": "PT. Smart Engineering",
+      "quantity": 130000,
+      "periods": [
+        {
+          "startDate": "2025-03-01T00:00:00",
+          "finishDate": "2025-04-01T00:00:00"
+        },
+        {
+          "startDate": "2025-10-15T00:00:00",
+          "finishDate": "2025-11-15T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "DAIHATSU X1-A1000-10 CAM HOUSING",
+      "customerName": "PT. Nusantara Motor",
+      "quantity": 95000,
+      "periods": [
+        {
+          "startDate": "2025-03-10T00:00:00",
+          "finishDate": "2025-04-10T00:00:00"
+        },
+        {
+          "startDate": "2025-07-20T00:00:00",
+          "finishDate": "2025-08-20T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "TOYOTA T3-C3333-77 BRAKE HUB",
+      "customerName": "PT. Astra Otoparts Tbk",
+      "quantity": 115000,
+      "periods": [
+        {
+          "startDate": "2025-03-20T00:00:00",
+          "finishDate": "2025-04-20T00:00:00"
+        },
+        {
+          "startDate": "2025-09-05T00:00:00",
+          "finishDate": "2025-10-05T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "ISUZU I8-H5555-21 SHAFT GEAR",
+      "customerName": "PT. XYZ Parts Indonesia",
+      "quantity": 105000,
+      "periods": [
+        {
+          "startDate": "2025-04-05T00:00:00",
+          "finishDate": "2025-05-05T00:00:00"
+        },
+        {
+          "startDate": "2025-11-01T00:00:00",
+          "finishDate": "2025-12-01T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "HINO H7-Q2222-90 SPINDLE",
+      "customerName": "PT. Victory Manufacturing",
+      "quantity": 98000,
+      "periods": [
+        {
+          "startDate": "2025-04-15T00:00:00",
+          "finishDate": "2025-05-15T00:00:00"
+        },
+        {
+          "startDate": "2025-09-20T00:00:00",
+          "finishDate": "2025-10-20T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "FUSO F5-L4444-12 HUB CARRIER",
+      "customerName": "PT. Smart Engineering",
+      "quantity": 125000,
+      "periods": [
+        {
+          "startDate": "2025-04-25T00:00:00",
+          "finishDate": "2025-05-25T00:00:00"
+        },
+        {
+          "startDate": "2025-08-10T00:00:00",
+          "finishDate": "2025-09-10T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "SYM S2-P7777-01 CLUTCH OUTER",
+      "customerName": "PT. Astra Otoparts Tbk",
+      "quantity": 88000,
+      "periods": [
+        {
+          "startDate": "2025-05-05T00:00:00",
+          "finishDate": "2025-06-05T00:00:00"
+        },
+        {
+          "startDate": "2025-10-01T00:00:00",
+          "finishDate": "2025-11-01T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "PIAGGIO P9-R2020-33 FRONT AXLE",
+      "customerName": "PT. XYZ Parts Indonesia",
+      "quantity": 102000,
+      "periods": [
+        {
+          "startDate": "2025-05-15T00:00:00",
+          "finishDate": "2025-06-15T00:00:00"
+        },
+        {
+          "startDate": "2025-11-10T00:00:00",
+          "finishDate": "2025-12-10T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "APRILIA A4-M9090-55 SWING ARM",
+      "customerName": "PT. Victory Manufacturing",
+      "quantity": 97000,
+      "periods": [
+        {
+          "startDate": "2025-05-25T00:00:00",
+          "finishDate": "2025-06-25T00:00:00"
+        },
+        {
+          "startDate": "2025-09-01T00:00:00",
+          "finishDate": "2025-10-01T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "BMW B1-Z8888-11 GEAR SHAFT",
+      "customerName": "PT. Honda Precision Parts",
+      "quantity": 140000,
+      "periods": [
+        {
+          "startDate": "2025-06-05T00:00:00",
+          "finishDate": "2025-07-05T00:00:00"
+        },
+        {
+          "startDate": "2025-11-15T00:00:00",
+          "finishDate": "2025-12-15T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "MERCEDES M3-W3030-44 COUPLING RING",
+      "customerName": "PT. Nusantara Motor",
+      "quantity": 118000,
+      "periods": [
+        {
+          "startDate": "2025-06-15T00:00:00",
+          "finishDate": "2025-07-15T00:00:00"
+        },
+        {
+          "startDate": "2025-10-05T00:00:00",
+          "finishDate": "2025-11-05T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "VOLVO V6-X6666-77 MAIN SHAFT",
+      "customerName": "PT. Smart Engineering",
+      "quantity": 132000,
+      "periods": [
+        {
+          "startDate": "2025-06-25T00:00:00",
+          "finishDate": "2025-07-25T00:00:00"
+        },
+        {
+          "startDate": "2025-09-15T00:00:00",
+          "finishDate": "2025-10-15T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "SCANIA S8-U1212-20 BEARING HOUSING",
+      "customerName": "PT. Astra Otoparts Tbk",
+      "quantity": 107000,
+      "periods": [
+        {
+          "startDate": "2025-07-05T00:00:00",
+          "finishDate": "2025-08-05T00:00:00"
+        },
+        {
+          "startDate": "2025-12-01T00:00:00",
+          "finishDate": "2026-01-01T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "MAN M2-J4545-88 GEAR COVER",
+      "customerName": "PT. XYZ Parts Indonesia",
+      "quantity": 113000,
+      "periods": [
+        {
+          "startDate": "2025-07-15T00:00:00",
+          "finishDate": "2025-08-15T00:00:00"
+        },
+        {
+          "startDate": "2025-10-20T00:00:00",
+          "finishDate": "2025-11-20T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "UD TRUCKS U1-G3131-19 DRIVE FLANGE",
+      "customerName": "PT. Victory Manufacturing",
+      "quantity": 96000,
+      "periods": [
+        {
+          "startDate": "2025-07-25T00:00:00",
+          "finishDate": "2025-08-25T00:00:00"
+        },
+        {
+          "startDate": "2025-11-05T00:00:00",
+          "finishDate": "2025-12-05T00:00:00"
+        }
+      ]
+    },
+    {
+      "partName": "FORD F4-E0101-70 HUB DRUM",
+      "customerName": "PT. Smart Engineering",
+      "quantity": 121000,
+      "periods": [
+        {
+          "startDate": "2025-08-05T00:00:00",
+          "finishDate": "2025-09-05T00:00:00"
+        },
+        {
+          "startDate": "2025-10-25T00:00:00",
+          "finishDate": "2025-11-25T00:00:00"
+        }
+      ]
+    }
+  ]
+}
+
+

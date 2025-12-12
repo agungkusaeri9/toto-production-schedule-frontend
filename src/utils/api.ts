@@ -92,7 +92,7 @@ api.interceptors.response.use(
 
     // Handle network errors
     if (!error.response) {
-      // showToast("Network error. Please check your connection.");
+      showToast("Network error. Please check your connection.");
       return Promise.reject(error);
     }
 

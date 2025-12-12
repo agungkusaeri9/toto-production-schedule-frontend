@@ -1,149 +1,129 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import ComponentCard from "@/components/common/ComponentCard";
-import scheduleData from "@/data/schedule-detail.json";
-import toast from "react-hot-toast";
-import InputLabel from "@/components/form/FormInput";
+import parts from "@/data/part.json";
+import customers from "@/data/customer.json";
+import processes from "@/data/process.json";
+import schedule from "@/data/schedule.json";
+import { useParams } from "next/navigation";
+import Loading from "@/components/common/Loading";
+import ProcessListService from "@/services/ProcessListService";
+import { useQuery } from "@tanstack/react-query";
+import ScheduleService from "@/services/ScheduleService";
 
-export default function CreateProduct() {
-    const [schedule, setSchedule] = useState(scheduleData);
-    const handleSetPriority = () => {
-        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+type DetailProcessList = {
+    id: number;
+    partId: number;
+    customerId: number;
+    target: number;
+    quantity: number;
+    processIds: number[];
+};
 
-        const machinesWithPriority = schedule.machines.map((machine) => {
-            let index = 0;
-            const materialsWithPriority = machine.materials.map((m) => ({
-                ...m,
-                priority: alphabet[index++ % alphabet.length],
-            }));
-            return { ...machine, materials: materialsWithPriority };
-        });
+export default function ShowProcessMasterDetail() {
+    const params = useParams();
+    const scheduleId = Number(params?.id);
 
-        setSchedule({
-            ...schedule,
-            machines: machinesWithPriority,
-        });
+    const { data: schedule, isLoading } = useQuery({
+        queryKey: ['schedule', scheduleId],
+        queryFn: async () => {
+            const response = await ScheduleService.getById(scheduleId!)
+            return response.data;
+        },
+        enabled: !!scheduleId,
+    });
 
-        toast.success("Prioritas berhasil di-set per machine!");
-    };
+    if (isLoading || !schedule) {
+        return <Loading />;
+    }
 
     return (
         <div>
             <Breadcrumb
                 items={[
                     { label: "Dashboard", href: "/dashboard" },
-                    { label: "Schedule", href: "/schedules" },
-                    { label: "Detail" },
+                    { label: "Schedules", href: "/schedules" },
+                    { label: `Detail` },
                 ]}
             />
-            <div className="space-y-6">
-                <ComponentCard title="Detail Schedule">
-                    <form
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            handleSetPriority();
-                        }}
-                        className="space-y-4"
-                    >
-                        <h3 className="text-lg font-semibold mb-6">
-                            Form  Schedule
-                        </h3>
-                        <div className="grid grid-cols-2 gap-4">
-                            <InputLabel
-                                label="Start Date"
-                                name="Start Date"
-                                type="text"
-                                placeholder="Enter Start Date"
-                                defaultValue={schedule.startDate}
-                                disabled
-                                onChange={() => { }}
-                            />
-                            <InputLabel
-                                label="End Date"
-                                name="End Date"
-                                type="text"
-                                placeholder="Enter End Date"
-                                defaultValue={schedule.endDate}
-                                disabled
-                                onChange={() => { }}
-                            />
 
+            <div className="grid grid-cols-[28%_1fr] items-start gap-6 mt-6">
+
+                {/* LEFT */}
+                <ComponentCard title="Schedule Information">
+                    <div className="grid gap-4">
+
+                        <div className="flex flex-col gap-1">
+                            <label className="text-xs text-gray-600">Part</label>
+                            <input
+                                className="w-full border rounded px-2 py-1 text-sm bg-gray-100"
+                                value={schedule.part?.name ?? "-"}
+                                readOnly
+                            />
                         </div>
-                    </form>
+
+                        <div className="flex flex-col gap-1">
+                            <label className="text-xs text-gray-600">Customer</label>
+                            <input
+                                className="w-full border rounded px-2 py-1 text-sm bg-gray-100"
+                                value={schedule.customer?.name ?? "-"}
+                                readOnly
+                            />
+                        </div>
+
+                        <div className="flex flex-col gap-1">
+                            <label className="text-xs text-gray-600">Target</label>
+                            <input
+                                className="w-full border rounded px-2 py-1 text-sm bg-gray-100"
+                                value={schedule.target}
+                                readOnly
+                            />
+                        </div>
+
+                        <div className="flex flex-col gap-1">
+                            <label className="text-xs text-gray-600">Quantity</label>
+                            <input
+                                className="w-full border rounded px-2 py-1 text-sm bg-gray-100"
+                                value={schedule.qty}
+                                readOnly
+                            />
+                        </div>
+
+                    </div>
                 </ComponentCard>
 
-                <ComponentCard title="Request Schedule Detail">
-                    <div className="space-y-6">
-                        {schedule.machines.map((machine, midx) => (
-                            <div key={midx} className="border p-4 rounded-md">
-                                <h4 className="font-semibold text-blue-600 mb-3">
-                                    {machine.machine_name}
-                                </h4>
-                                <div className="space-y-2">
-                                    {machine.materials.map((item, idx) => (
-                                        <div key={idx} className="flex items-start gap-4">
-                                            <InputLabel
-                                                label="Priority"
-                                                name="Priority"
-                                                type="text"
-                                                disabled
-                                                defaultValue={item.priority}
-                                                onChange={() => { }}
-                                            />
-                                            <InputLabel
-                                                label="Size"
-                                                name="Size"
-                                                type="number"
-                                                placeholder="Enter Size"
-                                                defaultValue={Math.floor(Math.random() * 100) + 1}
-                                                disabled
-                                                onChange={() => { }}
-                                            />
-                                            <InputLabel
-                                                label="RC/Stock"
-                                                name="RC/Stock"
-                                                type="number"
-                                                disabled
-                                                placeholder="Enter RC/Stock"
-                                                defaultValue={Math.floor(Math.random() * 200) + 1}
-                                                onChange={() => { }}
-                                            />
-                                            <InputLabel
-                                                label="SCH"
-                                                name="SCH"
-                                                type="number"
-                                                disabled
-                                                placeholder="Enter SCH"
-                                                defaultValue={Math.floor(Math.random() * 100) + 2}
-                                                onChange={() => { }}
-                                            />
-                                            <InputLabel
-                                                label="BO"
-                                                name="BO"
-                                                type="number"
-                                                placeholder="Enter BO"
-                                                disabled
-                                                defaultValue={Math.floor(Math.random() * 100) + 3}
-                                                onChange={() => { }}
-                                            />
-                                            <InputLabel
-                                                label="Remark"
-                                                name="Remark"
-                                                type="text"
-                                                placeholder="Enter Remark"
-                                                defaultValue={item.name + " - " + item.code}
-                                                disabled
-                                                onChange={() => { }}
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
+                {/* RIGHT */}
+                <ComponentCard title="Process List Detail">
+                    <div className="space-y-4">
+                        <table className="min-w-full border text-sm">
+                            <thead className="bg-gray-50">
+                                <tr>
+                                    <th className="border px-3 py-2 w-40">Step</th>
+                                    <th className="border px-3 py-2">Process</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {schedule?.schedulesDetails?.map((detail: any, index: number) => {
+                                    return (
+                                        <tr key={detail.id}>
+                                            <td className="border px-3 py-2">
+                                                Step {detail.order}
+                                            </td>
+
+                                            <td className="border px-3 py-2">
+                                                {detail.processName ?? "-"}
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+
+                        </table>
                     </div>
                 </ComponentCard>
             </div>
-        </div >
+        </div>
     );
 }

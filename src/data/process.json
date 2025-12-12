@@ -1,0 +1,23 @@
+[
+    {"id":1,"name":"FG/AC","type":"Internal"},
+    {"id":2,"name":"FG/BC","type":"Internal"},
+    {"id":3,"name":"F. QUENCHING","type":"External"},
+    {"id":4,"name":"QUENCHING","type":"External"},
+    {"id":5,"name":"BURRYTORI","type":"Internal"},
+    {"id":6,"name":"TAPPING","type":"Internal"},
+    {"id":7,"name":"BROACHING","type":"Internal"},
+    {"id":8,"name":"LATHE","type":"Internal"},
+    {"id":9,"name":"CF2","type":"Internal"},
+    {"id":10,"name":"CF1","type":"Internal"},
+    {"id":11,"name":"BONDE","type":"Internal"},
+    {"id":12,"name":"SODONG","type":"Internal"},
+    {"id":13,"name":"CUTTING","type":"Internal"},
+    {"id":14,"name":"FINISH PALSONITE","type":"External"},
+    {"id":15,"name":"PALSONITE","type":"External"},
+    {"id":16,"name":"DEBURING","type":"Internal"},
+    {"id":17,"name":"NC","type":"Internal"},
+    {"id":18,"name":"CP","type":"Internal"},
+    {"id":19,"name":"ANNEALING","type":"Internal"},
+    {"id":20,"name":"F. NORMALIZING","type":"External"},
+    {"id":21,"name":"NORMALIZING","type":"External"}
+]

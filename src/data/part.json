@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "KOYAMA 1S7-E5671-00 WHELL RATCHET",
+    "customer": { "id": 1, "name": "PT Nusantara Teknologi", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  },
+  {
+    "id": 2,
+    "name": "YIMM COLLAR 5BP-E1478-00",
+    "customer": { "id": 2, "name": "PT Anjay Software", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  },
+  {
+    "id": 3,
+    "name": "FCC CAM MOVABLE DRIVEN 23222-K0JA-N010",
+    "customer": { "id": 3, "name": "PT Mandiri Solusi Digital", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  },
+  {
+    "id": 4,
+    "name": "KAWASAKI SLEEVE 42036-0801",
+    "customer": { "id": 4, "name": "PT Suka Maju Elektronik", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  },
+  {
+    "id": 5,
+    "name": "DENSO BOSS ROTOR JK038711-9810",
+    "customer": { "id": 5, "name": "PT Jaya Makmur Sentosa", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  },
+  {
+    "id": 6,
+    "name": "BOSS PRIMARY DRIVE 23121-HN7-3000",
+    "customer": { "id": 6, "name": "PT Solusi Data Nusantara", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  },
+  {
+    "id": 7,
+    "name": "SOMIC SOCKET LWR BALL JOINT BD29-20350-000",
+    "customer": { "id": 7, "name": "PT Mega Indo Raya", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  },
+  {
+    "id": 8,
+    "name": "DENSO BOSS ROTOR JK038711-9761",
+    "customer": { "id": 8, "name": "PT Karya Utama Sejahtera", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  },
+  {
+    "id": 9,
+    "name": "FCC CAM DRIVEN FACE 23222-K1ZA-J000-H1",
+    "customer": { "id": 9, "name": "PT Cahaya Teknologi Global", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  },
+  {
+    "id": 10,
+    "name": "KAWASAKI COLLAR 92152-2374",
+    "customer": { "id": 10, "name": "PT Digital Nusantara Bersatu", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+  }
+]

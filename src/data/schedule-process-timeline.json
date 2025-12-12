@@ -1,0 +1,346 @@
+{
+  "data": [
+    {
+      "scheduleId": 1,
+      "partName": "KOYAMA 1S7-E5671-00 WHELL RATCHET",
+      "customerName": "PT. Astra Otoparts Tbk",
+      "quantity": 100000,
+      "schedulesDetails": [
+        {
+          "processName": "CUTTING",
+          "targetQtyPerDay": 50000,
+          "targetQtyTotal": 100000,
+          "startDate": "2025-11-01T00:00:00",
+          "finishDate": "2025-11-03T00:00:00"
+        },
+        {
+          "processName": "SODONG",
+          "targetQtyPerDay": 50000,
+          "targetQtyTotal": 100000,
+          "startDate": "2025-11-03T00:00:00",
+          "finishDate": "2025-11-05T00:00:00"
+        },
+        {
+          "processName": "BONDE",
+          "targetQtyPerDay": 50000,
+          "targetQtyTotal": 100000,
+          "startDate": "2025-11-05T00:00:00",
+          "finishDate": "2025-11-07T00:00:00"
+        },
+        {
+          "processName": "CF1",
+          "targetQtyPerDay": 50000,
+          "targetQtyTotal": 100000,
+          "startDate": "2025-11-07T00:00:00",
+          "finishDate": "2025-11-09T00:00:00"
+        },
+        {
+          "processName": "CF2",
+          "targetQtyPerDay": 50000,
+          "targetQtyTotal": 100000,
+          "startDate": "2025-11-09T00:00:00",
+          "finishDate": "2025-11-11T00:00:00"
+        },
+        {
+          "processName": "LATHE",
+          "targetQtyPerDay": 50000,
+          "targetQtyTotal": 100000,
+          "startDate": "2025-11-11T00:00:00",
+          "finishDate": "2025-11-13T00:00:00"
+        },
+        {
+          "processName": "BROACHING",
+          "targetQtyPerDay": 50000,
+          "targetQtyTotal": 100000,
+          "startDate": "2025-11-13T00:00:00",
+          "finishDate": "2025-11-15T00:00:00"
+        }
+      ]
+    },
+    {
+      "scheduleId": 2,
+      "partName": "YAMATO 2S1-A1111-00 LEVER SET",
+      "customerName": "PT. XYZ Parts Indonesia",
+      "quantity": 140000,
+      "schedulesDetails": [
+        {
+          "processName": "CUTTING",
+          "targetQtyPerDay": 70000,
+          "targetQtyTotal": 140000,
+          "startDate": "2025-11-02T00:00:00",
+          "finishDate": "2025-11-04T00:00:00"
+        },
+        {
+          "processName": "FORMING",
+          "targetQtyPerDay": 70000,
+          "targetQtyTotal": 140000,
+          "startDate": "2025-11-04T00:00:00",
+          "finishDate": "2025-11-06T00:00:00"
+        },
+        {
+          "processName": "LATHE",
+          "targetQtyPerDay": 70000,
+          "targetQtyTotal": 140000,
+          "startDate": "2025-11-06T00:00:00",
+          "finishDate": "2025-11-08T00:00:00"
+        },
+        {
+          "processName": "FINISHING",
+          "targetQtyPerDay": 70000,
+          "targetQtyTotal": 140000,
+          "startDate": "2025-11-08T00:00:00",
+          "finishDate": "2025-11-10T00:00:00"
+        },
+        {
+          "processName": "PACKING",
+          "targetQtyPerDay": 70000,
+          "targetQtyTotal": 140000,
+          "startDate": "2025-11-10T00:00:00",
+          "finishDate": "2025-11-12T00:00:00"
+        },
+        {
+          "processName": "PQC",
+          "targetQtyPerDay": 140000,
+          "targetQtyTotal": 140000,
+          "startDate": "2025-11-12T00:00:00",
+          "finishDate": "2025-11-13T00:00:00"
+        },
+        {
+          "processName": "DELIVERY",
+          "targetQtyPerDay": 140000,
+          "targetQtyTotal": 140000,
+          "startDate": "2025-11-13T00:00:00",
+          "finishDate": "2025-11-14T00:00:00"
+        }
+      ]
+    },
+    {
+      "scheduleId": 3,
+      "partName": "SUZUKI 9Z9-B2222-00 GEAR HUB",
+      "customerName": "PT. Nusantara Motor",
+      "quantity": 150000,
+      "schedulesDetails": [
+        {
+          "processName": "FORGING",
+          "targetQtyPerDay": 75000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-03T00:00:00",
+          "finishDate": "2025-11-05T00:00:00"
+        },
+        {
+          "processName": "MACHINING",
+          "targetQtyPerDay": 75000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-05T00:00:00",
+          "finishDate": "2025-11-07T00:00:00"
+        },
+        {
+          "processName": "HEAT TREAT",
+          "targetQtyPerDay": 75000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-07T00:00:00",
+          "finishDate": "2025-11-09T00:00:00"
+        },
+        {
+          "processName": "TAPPING",
+          "targetQtyPerDay": 75000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-09T00:00:00",
+          "finishDate": "2025-11-11T00:00:00"
+        },
+        {
+          "processName": "POLISHING",
+          "targetQtyPerDay": 75000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-11T00:00:00",
+          "finishDate": "2025-11-13T00:00:00"
+        },
+        {
+          "processName": "INSPECTION",
+          "targetQtyPerDay": 75000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-13T00:00:00",
+          "finishDate": "2025-11-15T00:00:00"
+        },
+        {
+          "processName": "PACKING",
+          "targetQtyPerDay": 150000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-15T00:00:00",
+          "finishDate": "2025-11-16T00:00:00"
+        }
+      ]
+    },
+    {
+      "scheduleId": 4,
+      "partName": "HONDA 1A1-E3333-02 CLUTCH RING",
+      "customerName": "PT. Honda Precision Parts",
+      "quantity": 105000,
+      "schedulesDetails": [
+        {
+          "processName": "MOLDING",
+          "targetQtyPerDay": 52500,
+          "targetQtyTotal": 105000,
+          "startDate": "2025-11-01T00:00:00",
+          "finishDate": "2025-11-03T00:00:00"
+        },
+        {
+          "processName": "PRESSING",
+          "targetQtyPerDay": 52500,
+          "targetQtyTotal": 105000,
+          "startDate": "2025-11-03T00:00:00",
+          "finishDate": "2025-11-05T00:00:00"
+        },
+        {
+          "processName": "CLEANING",
+          "targetQtyPerDay": 52500,
+          "targetQtyTotal": 105000,
+          "startDate": "2025-11-05T00:00:00",
+          "finishDate": "2025-11-07T00:00:00"
+        },
+        {
+          "processName": "GRINDING",
+          "targetQtyPerDay": 52500,
+          "targetQtyTotal": 105000,
+          "startDate": "2025-11-07T00:00:00",
+          "finishDate": "2025-11-09T00:00:00"
+        },
+        {
+          "processName": "POLISHING",
+          "targetQtyPerDay": 52500,
+          "targetQtyTotal": 105000,
+          "startDate": "2025-11-09T00:00:00",
+          "finishDate": "2025-11-11T00:00:00"
+        },
+        {
+          "processName": "INSPECTION",
+          "targetQtyPerDay": 52500,
+          "targetQtyTotal": 105000,
+          "startDate": "2025-11-11T00:00:00",
+          "finishDate": "2025-11-13T00:00:00"
+        },
+        {
+          "processName": "DELIVERY",
+          "targetQtyPerDay": 105000,
+          "targetQtyTotal": 105000,
+          "startDate": "2025-11-13T00:00:00",
+          "finishDate": "2025-11-14T00:00:00"
+        }
+      ]
+    },
+    {
+      "scheduleId": 5,
+      "partName": "SUZUKI SN5-F4444-77 GRIP HOLDER",
+      "customerName": "PT. Victory Manufacturing",
+      "quantity": 70000,
+      "schedulesDetails": [
+        {
+          "processName": "LATHE",
+          "targetQtyPerDay": 70000,
+          "targetQtyTotal": 70000,
+          "startDate": "2025-11-05T00:00:00",
+          "finishDate": "2025-11-06T00:00:00"
+        },
+        {
+          "processName": "BORING",
+          "targetQtyPerDay": 35000,
+          "targetQtyTotal": 70000,
+          "startDate": "2025-11-06T00:00:00",
+          "finishDate": "2025-11-08T00:00:00"
+        },
+        {
+          "processName": "TAPPING",
+          "targetQtyPerDay": 35000,
+          "targetQtyTotal": 70000,
+          "startDate": "2025-11-08T00:00:00",
+          "finishDate": "2025-11-10T00:00:00"
+        },
+        {
+          "processName": "GRINDING",
+          "targetQtyPerDay": 35000,
+          "targetQtyTotal": 70000,
+          "startDate": "2025-11-10T00:00:00",
+          "finishDate": "2025-11-12T00:00:00"
+        },
+        {
+          "processName": "POLISHING",
+          "targetQtyPerDay": 35000,
+          "targetQtyTotal": 70000,
+          "startDate": "2025-11-12T00:00:00",
+          "finishDate": "2025-11-14T00:00:00"
+        },
+        {
+          "processName": "INSPECTION",
+          "targetQtyPerDay": 70000,
+          "targetQtyTotal": 70000,
+          "startDate": "2025-11-14T00:00:00",
+          "finishDate": "2025-11-15T00:00:00"
+        },
+        {
+          "processName": "PACKING",
+          "targetQtyPerDay": 70000,
+          "targetQtyTotal": 70000,
+          "startDate": "2025-11-15T00:00:00",
+          "finishDate": "2025-11-16T00:00:00"
+        }
+      ]
+    },
+    {
+      "scheduleId": 6,
+      "partName": "KAWASAKI 9Q1-B9980-40 ENGINE LINK",
+      "customerName": "PT. Smart Engineering",
+      "quantity": 150000,
+      "schedulesDetails": [
+        {
+          "processName": "CUTTING",
+          "targetQtyPerDay": 150000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-02T00:00:00",
+          "finishDate": "2025-11-03T00:00:00"
+        },
+        {
+          "processName": "LATHE",
+          "targetQtyPerDay": 75000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-03T00:00:00",
+          "finishDate": "2025-11-05T00:00:00"
+        },
+        {
+          "processName": "GRINDING",
+          "targetQtyPerDay": 150000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-05T00:00:00",
+          "finishDate": "2025-11-06T00:00:00"
+        },
+        {
+          "processName": "TAPPING",
+          "targetQtyPerDay": 150000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-06T00:00:00",
+          "finishDate": "2025-11-07T00:00:00"
+        },
+        {
+          "processName": "FINISHING",
+          "targetQtyPerDay": 75000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-07T00:00:00",
+          "finishDate": "2025-11-09T00:00:00"
+        },
+        {
+          "processName": "INSPECTION",
+          "targetQtyPerDay": 150000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-09T00:00:00",
+          "finishDate": "2025-11-10T00:00:00"
+        },
+        {
+          "processName": "PACKING",
+          "targetQtyPerDay": 150000,
+          "targetQtyTotal": 150000,
+          "startDate": "2025-11-10T00:00:00",
+          "finishDate": "2025-11-11T00:00:00"
+        }
+      ]
+    }
+  ]
+}

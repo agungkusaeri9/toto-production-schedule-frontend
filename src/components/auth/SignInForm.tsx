@@ -48,14 +48,14 @@ export default function SignInForm() {
         }
       }
 
-      if (username === 'ppc' && password === 'ppc') {
+      if (username === 'operator' && password === 'operator') {
         response = {
           data: {
             data: {
               id: 2,
-              username: 'ppc',
-              name: 'PPC',
-              role: 'ppc',
+              username: 'operator',
+              name: 'Operator',
+              role: 'operator',
               token: 'tokenss'
             }
           },
@@ -63,20 +63,20 @@ export default function SignInForm() {
         }
       }
 
-      if (username === 'p3' && password === 'p3') {
-        response = {
-          data: {
-            data: {
-              id: 2,
-              username: 'p3',
-              name: 'P3',
-              role: 'p3',
-              token: 'tokenss'
-            }
-          },
-          message: 'Login success'
-        }
-      }
+      // if (username === 'p3' && password === 'p3') {
+      //   response = {
+      //     data: {
+      //       data: {
+      //         id: 2,
+      //         username: 'p3',
+      //         name: 'P3',
+      //         role: 'p3',
+      //         token: 'tokenss'
+      //       }
+      //     },
+      //     message: 'Login success'
+      //   }
+      // }
 
       return response;
     },
@@ -96,6 +96,10 @@ export default function SignInForm() {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
     resolver: zodResolver(loginValidation),
     mode: "onChange",
+    defaultValues: {
+      username: "admin",
+      password: "admin",
+    }
   });
 
   const onSubmit = (data: LoginFormData) => {

@@ -1,0 +1,12 @@
+[
+  { "id": 1, "name": "PT Nusantara Teknologi", "created_at": "2023-10-01", "updated_at": "2023-10-01" },
+  { "id": 2, "name": "PT Anjay Software", "created_at": "2023-10-01", "updated_at": "2023-10-01" },
+  { "id": 3, "name": "PT Mandiri Solusi Digital", "created_at": "2023-10-01", "updated_at": "2023-10-01" },
+  { "id": 4, "name": "PT Suka Maju Elektronik", "created_at": "2023-10-01", "updated_at": "2023-10-01" },
+  { "id": 5, "name": "PT Jaya Makmur Sentosa", "created_at": "2023-10-01", "updated_at": "2023-10-01" },
+  { "id": 6, "name": "PT Solusi Data Nusantara", "created_at": "2023-10-01", "updated_at": "2023-10-01" },
+  { "id": 7, "name": "PT Mega Indo Raya", "created_at": "2023-10-01", "updated_at": "2023-10-01" },
+  { "id": 8, "name": "PT Karya Utama Sejahtera", "created_at": "2023-10-01", "updated_at": "2023-10-01" },
+  { "id": 9, "name": "PT Cahaya Teknologi Global", "created_at": "2023-10-01", "updated_at": "2023-10-01" },
+  { "id": 10, "name": "PT Digital Nusantara Bersatu", "created_at": "2023-10-01", "updated_at": "2023-10-01" }
+]

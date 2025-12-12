@@ -1,0 +1,132 @@
+[
+    {
+        "id":1,
+        "part":{
+            "id":1,
+            "name":"KOYAMA 1S7-E5671-00 WHELL RATCHET"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 75000
+    },
+    {
+        "id":2,
+        "part":{
+            "id":2,
+            "name":"YIMM COLLAR 5BP-E1478-00"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 85000
+    },
+    {
+        "id":3,
+        "part":{
+            "id":3,
+            "name":"FCC CAM MOVABLE DRIVEN 23222-K0JA-N010"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 25000
+    },
+    {
+        "id":4,
+        "part":{
+            "id":4,
+            "name":"KAWASAKI SLEEVE 42036-0801"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 55000
+    },
+    {
+        "id":5,
+        "part":{
+            "id":5,
+            "name":"DENSO BOSS ROTOR JK038711-9810"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 76000
+    },
+    {
+        "id":6,
+        "part":{
+            "id":6,
+            "name":"BOSS PRIMARY DRIVE 23121-HN7-3000"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 85000
+    },
+    {
+        "id":7,
+        "part":{
+            "id":7,
+            "name":"SOMIC SOCKET LWR BALL JOINT BD29-20350-000"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 95000
+    },
+    {
+        "id":8,
+        "part":{
+            "id":8,
+            "name":"DENSO BOSS ROTOR JK038711-9761"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 91000
+    },
+    {
+        "id":9,
+        "part":{
+            "id":9,
+            "name":"FCC CAM DRIVEN FACE 23222-K1ZA-J000-H1"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 89000
+    },
+    {
+        "id":10,
+        "part":{
+            "id":10,
+            "name":"KAWASAKI COLLAR 92152-2374"
+        },
+        "customer":{
+            "id":1,
+            "name":"PT. Astra Otoparts Tbk"
+        },
+        "target":"2025-12-08T02:51:50.477",
+        "quantity": 56000
+    }
+]
