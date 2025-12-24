@@ -11,6 +11,7 @@ import Loading from "@/components/common/Loading";
 import ProcessListService from "@/services/ProcessListService";
 import { useQuery } from "@tanstack/react-query";
 import ScheduleService from "@/services/ScheduleService";
+import { formatNumber } from "@/utils/currencyFormat";
 
 type DetailProcessList = {
     id: number;
@@ -33,6 +34,8 @@ export default function ShowProcessMasterDetail() {
         },
         enabled: !!scheduleId,
     });
+
+    console.log({ schedule })
 
     if (isLoading || !schedule) {
         return <Loading />;
@@ -58,7 +61,7 @@ export default function ShowProcessMasterDetail() {
                             <label className="text-xs text-gray-600">Part</label>
                             <input
                                 className="w-full border rounded px-2 py-1 text-sm bg-gray-100"
-                                value={schedule.part?.name ?? "-"}
+                                value={schedule.partName ?? "-"}
                                 readOnly
                             />
                         </div>
@@ -67,16 +70,24 @@ export default function ShowProcessMasterDetail() {
                             <label className="text-xs text-gray-600">Customer</label>
                             <input
                                 className="w-full border rounded px-2 py-1 text-sm bg-gray-100"
-                                value={schedule.customer?.name ?? "-"}
+                                value={schedule.customerName ?? "-"}
                                 readOnly
                             />
                         </div>
 
                         <div className="flex flex-col gap-1">
-                            <label className="text-xs text-gray-600">Target</label>
+                            <label className="text-xs text-gray-600">Month</label>
                             <input
                                 className="w-full border rounded px-2 py-1 text-sm bg-gray-100"
-                                value={schedule.target}
+                                value={schedule.month}
+                                readOnly
+                            />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label className="text-xs text-gray-600">Year</label>
+                            <input
+                                className="w-full border rounded px-2 py-1 text-sm bg-gray-100"
+                                value={schedule.year}
                                 readOnly
                             />
                         </div>
@@ -85,7 +96,7 @@ export default function ShowProcessMasterDetail() {
                             <label className="text-xs text-gray-600">Quantity</label>
                             <input
                                 className="w-full border rounded px-2 py-1 text-sm bg-gray-100"
-                                value={schedule.qty}
+                                value={formatNumber(schedule.quantity)}
                                 readOnly
                             />
                         </div>
@@ -101,11 +112,12 @@ export default function ShowProcessMasterDetail() {
                                 <tr>
                                     <th className="border px-3 py-2 w-40">Step</th>
                                     <th className="border px-3 py-2">Process</th>
+                                    <th className="border px-3 py-2">Process Type</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                {schedule?.schedulesDetails?.map((detail: any, index: number) => {
+                                {schedule?.processLists?.map((detail: any, index: number) => {
                                     return (
                                         <tr key={detail.id}>
                                             <td className="border px-3 py-2">
@@ -114,6 +126,9 @@ export default function ShowProcessMasterDetail() {
 
                                             <td className="border px-3 py-2">
                                                 {detail.processName ?? "-"}
+                                            </td>
+                                            <td className="border px-3 py-2">
+                                                {detail.processType ?? "-"}
                                             </td>
                                         </tr>
                                     );

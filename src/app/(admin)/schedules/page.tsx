@@ -33,16 +33,21 @@ function OperatorListContent() {
             accessorKey: "part.name",
             cell: (item: { part: any }) => item?.part?.name || '-',
         },
-        // {
-        //     header: "Month",
-        //     accessorKey: "month.name",
-        //     cell: (item: { month: any }) => item?.month,
-        // },
-        // {
-        //     header: "Year",
-        //     accessorKey: "year.name",
-        //     cell: (item: { year: any }) => item?.year?.name || '-',
-        // },
+        {
+            header: "Customer",
+            accessorKey: "customer.name",
+            cell: (item: { customer: any }) => item?.customer?.name || '-',
+        },
+        {
+            header: "Month",
+            accessorKey: "month",
+            cell: (item: { month: any }) => item?.month || '-',
+        },
+        {
+            header: "Year",
+            accessorKey: "year",
+            cell: (item: { year: any }) => item?.year || '-',
+        },
         {
             header: "Quantity",
             accessorKey: "quantity",

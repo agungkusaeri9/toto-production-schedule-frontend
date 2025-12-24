@@ -57,27 +57,12 @@ const AppSidebar: React.FC = () => {
       name: "Dashboard",
       subItems: [
         { name: "Summary", path: "/dashboard", pro: false },
-        { name: "Timeline", path: "/timelines", pro: false },
-        { name: "Timeline Schedule", path: "/timeline-schedules", pro: false },
+        { name: "Timeline", path: "/daily-schedule", pro: false },
+        { name: "Timeline Schedule", path: "/timeline-process", pro: false },
       ],
       requiresAuth: true,
       roles: ["admin"],
     },
-    {
-      icon: <GridIcon />,
-      name: "Timelines By Process",
-      path: "/timeline-process",
-      requiresAuth: true,
-      roles: ["admin"],
-    },
-    {
-      icon: <CalendarDays />,
-      name: "Daily Schedule",
-      path: "/daily-schedule",
-      requiresAuth: true,
-      roles: ["admin"],
-    },
-
     {
       icon: <CalendarDays />,
       name: "Schedules",
