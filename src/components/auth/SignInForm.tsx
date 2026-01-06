@@ -65,7 +65,8 @@ export default function SignInForm() {
       const userToken = response.data.data.token;
       login(userData, userToken);
       toast.success(response.data.message || "Welcome back!");
-      router.push(callbackUrl);
+      // router.push(callbackUrl);
+      window.location.href = callbackUrl;
     },
     onError: (error: AxiosError<{ message: string }>) => {
       showToast(error.response?.data?.message ?? error.message ?? 'Terjadi kesalahan');
