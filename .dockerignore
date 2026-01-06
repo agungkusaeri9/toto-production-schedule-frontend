@@ -25,3 +25,5 @@ yarn-error.log
 *.lock
 docker-compose.yml
 Dockerfile
+
+docker-compose.prod.yml
