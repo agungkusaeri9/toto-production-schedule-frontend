@@ -26,7 +26,8 @@ export default function ProductionTimelinePage() {
         x: number;
         y: number;
         data: TimelineScheduleDetail | null;
-    }>({ isOpen: false, x: 0, y: 0, data: null });
+        modelName: string;
+    }>({ isOpen: false, x: 0, y: 0, data: null, modelName: "" });
 
     const popoverRef = useRef<HTMLDivElement>(null);
 
@@ -124,7 +125,7 @@ export default function ProductionTimelinePage() {
         return { startDate: start, endDate: end, totalHours: dayCount * 24, days: daysArr };
     }, [timelineData]);
 
-    const handleBarClick = (e: React.MouseEvent, detail: TimelineScheduleDetail) => {
+    const handleBarClick = (e: React.MouseEvent, detail: TimelineScheduleDetail, modelName: string) => {
         e.stopPropagation(); // Prevent immediate close
         const rect = e.currentTarget.getBoundingClientRect();
 
@@ -137,7 +138,8 @@ export default function ProductionTimelinePage() {
             isOpen: true,
             x,
             y,
-            data: detail
+            data: detail,
+            modelName
         });
     };
 
@@ -205,7 +207,7 @@ export default function ProductionTimelinePage() {
                         <div className="w-[250px] bg-white border-r border-gray-200 shadow-md flex-shrink-0">
                             <div className="h-[80px] border-b border-gray-200 bg-gray-50 flex items-center sticky top-0 z-30 font-semibold text-gray-700 text-sm">
                                 <div className="w-[100px] px-2 text-center border-r border-gray-200 h-full flex items-center justify-center">Model</div>
-                                <div className="flex-1 px-4 h-full flex items-center justify-center">Part</div>
+                                <div className="flex-1 px-4 h-full flex items-center justify-center">Work Center</div>
                             </div>
                             <div className="bg-white">
                                 {timelineData.data?.filter(m => m.scheduleDetails && m.scheduleDetails.length > 0).map((model, mIdx) => (
@@ -221,7 +223,7 @@ export default function ProductionTimelinePage() {
                                                     key={detail.id}
                                                     className={`h-[40px] px-4 py-1 flex items-center text-sm gap-2 ${dIdx !== model.scheduleDetails.length - 1 ? 'border-b border-gray-100' : ''}`}
                                                 >
-                                                    <div className="text-gray-700 text-xs flex-1 truncate font-medium" title={detail.partName}>{detail.partName}</div>
+                                                    <div className="text-gray-700 text-xs flex-1 truncate font-medium" title={detail.workCenterName}>{detail.workCenterName}</div>
                                                 </div>
                                             ))}
                                         </div>
@@ -334,10 +336,10 @@ export default function ProductionTimelinePage() {
                                                     <div
                                                         className="absolute top-1 bottom-1 rounded shadow-sm border flex items-center px-2 text-white text-xs overflow-hidden whitespace-nowrap transition-colors cursor-pointer pointer-events-auto bg-blue-500 border-blue-600 hover:bg-blue-600"
                                                         style={{ left: `${Math.max(0, left)}px`, width: `${Math.max(1, width)}px` }}
-                                                        title="Click for details"
-                                                        onClick={(e) => handleBarClick(e, detail)}
+                                                        title={`Model: ${model.modelName}\nWork Center: ${detail.workCenterName}\nStart: ${format(new Date(detail.startTime), "HH:mm")}\nEnd: ${format(new Date(detail.finishTime), "HH:mm")}`}
+                                                        onClick={(e) => handleBarClick(e, detail, model.modelName)}
                                                     >
-                                                        {width > 20 && detail.partName}
+                                                        {width > 20 && detail.workCenterName}
                                                     </div>
                                                 </div>
                                             );
@@ -365,7 +367,7 @@ export default function ProductionTimelinePage() {
                     <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-b border-r border-gray-200 rotate-45 shadow-sm"></div>
 
                     <div className="flex justify-between items-start mb-2 relative z-10">
-                        <h3 className="font-bold text-gray-800">{popover.data.partName}</h3>
+                        <h3 className="font-bold text-gray-800">{popover.modelName}</h3>
                         <button
                             onClick={() => setPopover(prev => ({ ...prev, isOpen: false }))}
                             className="text-gray-400 hover:text-gray-600"
@@ -379,6 +381,12 @@ export default function ProductionTimelinePage() {
                             <span className="text-gray-500">Work Center</span>
                             <span className="font-medium text-gray-800">{popover.data.workCenterName}</span>
                         </div>
+                        {popover.data.quantity && (
+                            <div className="flex justify-between border-b border-gray-100 pb-1">
+                                <span className="text-gray-500">Quantity</span>
+                                <span className="font-medium text-gray-800">{popover.data.quantity.toLocaleString()}</span>
+                            </div>
+                        )}
                         <div className="flex justify-between border-b border-gray-100 pb-1">
                             <span className="text-gray-500">Start</span>
                             <span className="font-medium text-gray-800">{format(new Date(popover.data.startTime), "d MMM HH:mm")}</span>
