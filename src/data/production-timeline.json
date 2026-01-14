@@ -1,0 +1,33 @@
+{
+    "data": [
+      {
+        "modelName": "TX2AV1B",
+        "scheduleDetails": [
+          {
+            "id": 1,
+            "scheduleId": 2,
+            "partName": "S15002R_MC",
+            "workCenterName": "3MCCM",
+            "startTime": "2026-01-13T14:50:25.828342",
+            "finishTime": "2026-01-14T18:37:05.828342"
+          },
+          {
+            "id": 2,
+            "scheduleId": 2,
+            "partName": "S15002R_MC",
+            "workCenterName": "3MCPRDR",
+            "startTime": "2026-01-14T18:37:05.828342",
+            "finishTime": "2026-01-19T04:10:25.828342"
+          },
+          {
+            "id": 3,
+            "scheduleId": 2,
+            "partName": "S15002R_MC",
+            "workCenterName": "3MCPRDR",
+            "startTime": "2026-01-19T04:10:25.828342",
+            "finishTime": "2026-01-24T23:03:45.828342"
+          }
+        ]
+      }
+    ]
+  }

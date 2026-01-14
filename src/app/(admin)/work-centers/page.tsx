@@ -8,21 +8,22 @@ import DataTable from "@/components/common/DataTable";
 import Loading from "@/components/common/Loading";
 import toast from "react-hot-toast";
 import { useFetchData } from "@/hooks/useFetchData";
-import PartService from "@/services/PartService";
 import { useDeleteData } from "@/hooks/useDeleteData";
+import WorkCenterService from "@/services/WorkCenterService";
+import { WorkCenter } from "@/types/workCenter";
 
+function WorkCenterListContent() {
 
-function OperatorListContent() {
-    const { data: parts, isLoading } = useFetchData(PartService.getWithoutPagination, "parts");
-    const { mutate: remove } = useDeleteData(PartService.remove, ["parts"]);
+    const { data: workCenters, isLoading } = useFetchData(WorkCenterService.getWithoutPagination, "work-centers");
+    const { mutate: remove } = useDeleteData(WorkCenterService.remove, ["work-centers"]);
+
     const handleDelete = async (id: number) => {
         const confirmed = await confirmDelete();
         if (confirmed) {
             remove(id);
-            toast.success("Part deleted successfully.");
+            toast.success("Work Center deleted successfully.");
         }
     };
-
 
     const columns = [
         {
@@ -30,31 +31,31 @@ function OperatorListContent() {
             accessorKey: "name",
         },
         {
-            header: "Type",
-            accessorKey: "type",
-        },
-        {
-            header: "Customer",
-            accessorKey: "customer.name",
-            cell(item: { customer: { name: string } }) {
-                return item.customer?.name || '-';
-            },
+            header: "Created At",
+            accessorKey: "createdAt",
+            cell: (item: WorkCenter) => item.createdAt ? new Date(item.createdAt).toLocaleString() : '-',
         },
         {
             header: "Action",
             accessorKey: "id",
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            cell: (item: any) => (
+            cell: (item: WorkCenter) => (
                 <div className="flex items-center gap-2">
                     <ButtonLink
-                        href={`/parts/${item.id}/edit`}
+                        href={`/work-centers/${item.id}`}
+                        variant='warning'
+                        size='xs'
+                    >
+                        Detail
+                    </ButtonLink>
+                    <ButtonLink
+                        href={`/work-centers/${item.id}/edit`}
                         variant='info'
                         size='xs'
                     >
                         Edit
                     </ButtonLink>
                     <Button
-                        onClick={() => handleDelete(item.id!)}
+                        onClick={() => handleDelete(item.id)}
                         variant='danger'
                         size='xs'
                     >
@@ -65,27 +66,26 @@ function OperatorListContent() {
         },
     ];
 
-    if (!parts && isLoading) {
+    if (!workCenters && isLoading) {
         return <Loading />
     }
 
-
     return (
         <div>
-            <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Parts', href: '/parts' }]} />
+            <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Work Centers', href: '/work-centers' }]} />
             <div className="space-y-6">
                 <div className="flex justify-end mb-4">
-                    <ButtonLink size='xs' href="/parts/create">Create Part</ButtonLink>
+                    <ButtonLink size='xs' href="/work-centers/create">Create Work Center</ButtonLink>
                 </div>
                 <DataTable
-                    title="Parts List"
+                    title="Work Center List"
                     columns={columns}
-                    data={parts || []}
+                    data={workCenters || []}
                     isLoading={false}
                     pagination={{
                         currentPage: 1,
                         totalPages: 1,
-                        totalItems: 20,
+                        totalItems: workCenters?.length || 0,
                         itemsPerPage: 10,
                         onPageChange: () => { },
                         onLimitChange: () => { },
@@ -93,7 +93,7 @@ function OperatorListContent() {
                     search={{
                         value: "",
                         onChange: () => { },
-                        placeholder: "Search Parts...",
+                        placeholder: "Search Work Center...",
                     }}
                 />
             </div>
@@ -104,7 +104,7 @@ function OperatorListContent() {
 export default function Page() {
     return (
         <Suspense fallback={<Loading />}>
-            <OperatorListContent />
+            <WorkCenterListContent />
         </Suspense>
     );
 }

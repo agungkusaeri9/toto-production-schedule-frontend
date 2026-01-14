@@ -1,14 +1,14 @@
 import { ApiResponse } from "@/types/api";
 import { FetchFunctionWithPagination, PaginatedResponse } from "@/types/fetch";
 import api from "@/utils/api";
-import { Part, PartForm } from "@/types/part";
+import { Model, ModelForm } from "@/types/model";
 
-const get: FetchFunctionWithPagination<Part> = async (
+const get: FetchFunctionWithPagination<Model> = async (
   page = 1,
   limit = 10,
   keyword = ""
-): Promise<PaginatedResponse<Part>> => {
-  const response = await api.get<PaginatedResponse<Part>>("part", {
+): Promise<PaginatedResponse<Model>> => {
+  const response = await api.get<PaginatedResponse<Model>>("model", {
     params: { limit, keyword, page, paginate: true },
   });
   return response.data;
@@ -16,16 +16,16 @@ const get: FetchFunctionWithPagination<Part> = async (
 
 const getWithoutPagination = async (
   keyword?: string,
-): Promise<ApiResponse<Part[]>> => {
-  const response = await api.get<ApiResponse<Part[]>>("part", {
+): Promise<ApiResponse<Model[]>> => {
+  const response = await api.get<ApiResponse<Model[]>>("model", {
     params: { keyword },
   });
   return response.data;
 };
 
-const create = async (data: PartForm) => {
+const create = async (data: ModelForm) => {
   try {
-    const response = await api.post("part", data);
+    const response = await api.post("model", data);
     return response.data;
   } catch (error) {
     throw error;
@@ -34,16 +34,16 @@ const create = async (data: PartForm) => {
 
 const getById = async (id: number) => {
   try {
-    const response = await api.get(`part/${id}`);
+    const response = await api.get(`model/${id}`);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-const update = async (id: number, data: PartForm) => {
+const update = async (id: number, data: ModelForm) => {
   try {
-    const response = await api.patch(`part/${id}`, data);
+    const response = await api.patch(`model/${id}`, data);
     return response.data;
   } catch (error) {
     throw error;
@@ -52,12 +52,12 @@ const update = async (id: number, data: PartForm) => {
 
 const remove = async (id: number) => {
   try {
-    const response = await api.delete(`part/${id}`);
+    const response = await api.delete(`model/${id}`);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-const PartService = { get, getWithoutPagination, create, getById, update, remove };
-export default PartService;
+const ModelService = { get, getWithoutPagination, create, getById, update, remove };
+export default ModelService;

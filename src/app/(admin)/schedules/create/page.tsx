@@ -1,62 +1,47 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import ComponentCard from "@/components/common/ComponentCard";
-import scheduleData from "@/data/schedule-detail.json";
 import toast from "react-hot-toast";
 import InputLabel from "@/components/form/FormInput";
-import SelectLabel from "@/components/form/FormSelect";
 import Button from "@/components/ui/button/Button";
-import processes from "@/data/process.json";
 import { useCreateData } from "@/hooks/useCreateData";
 import ScheduleService from "@/services/ScheduleService";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import DatePicker from "@/components/form/datePicker";
 import { useFetchData } from "@/hooks/useFetchData";
-import PartService from "@/services/PartService";
-import CustomerService from "@/services/CustomerService";
 import FormSelect2 from "@/components/form/FormSelect2";
-import Loading from "@/components/common/Loading";
 import { Loader2 } from "lucide-react";
-import monthData from "@/data/month.json";
-import yearData from "@/data/year.json";
+import ModelService from "@/services/ModelService";
+import { createScheduleSchema } from "@/validators/scheduleValidator";
+import { z } from "zod";
 
-type Step = {
-    id: number;
-    processId: string;
-};
+type CreateScheduleFormData = z.infer<typeof createScheduleSchema>;
 
-export default function CreateProduct() {
+export default function CreateSchedule() {
 
-    const { data: parts } = useFetchData(PartService.getWithoutPagination, "parts");
+    const { data: models } = useFetchData(ModelService.getWithoutPagination, "models");
 
     const { mutate: createSchedule, isPending } = useCreateData(ScheduleService.create, ["schedules"], "/schedules");
 
     const {
         register,
         handleSubmit,
-        setValue,
-        watch,
         control,
         formState: { errors },
         reset
-    } = useForm<any>({
+    } = useForm<CreateScheduleFormData>({
+        resolver: zodResolver(createScheduleSchema),
         mode: "onChange",
     });
 
-    const onSubmit = (data: any) => {
-        console.log("Raw form data:", data);
-        console.log("Month:", data.month);
-        console.log("Year:", data.year);
-
+    const onSubmit = (data: CreateScheduleFormData) => {
         const payload = {
-            ...data,
-            partId: data.partId?.value || null,
-            month: data.month?.value || null,
-            year: data.year?.value || null,
+            modelId: data.modelId.value,
+            quantity: data.quantity,
         }
-        createSchedule(payload, {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        createSchedule(payload as any, {
             onSuccess: () => {
                 toast.success("Schedule created successfully.");
                 reset();
@@ -79,70 +64,33 @@ export default function CreateProduct() {
                         onSubmit={handleSubmit(onSubmit)}
                         className="space-y-4"
                     >
-                        <h3 className="text-lg font-semibold mb-6">
-                            Schedule Form
-                        </h3>
-                        <div className="grid grid-cols-1">
-                            {parts ? (
+                        <div className="grid grid-cols-1 gap-6">
+                            {models ? (
                                 <FormSelect2
-                                    label="Part"
-                                    name="partId"
+                                    label="Model"
+                                    name="modelId"
                                     control={control}
-                                    options={parts?.map((d: any) => ({
-                                        label: d.name + "(" + d.type + ")" + " - " + d.customer?.name,
-                                        value: d.id || 0,
-                                    }))}
-                                    error={errors.partId?.message as string || undefined}
-                                    placeholder="Select Part"
-                                />
-                            ) :
-                                <div className="flex items-center">
-                                    <Loader2 className="w-4 h-4 animate-spin" />
-                                    <p>Loading parts...</p>
-                                </div>}
-                            {monthData ? (
-                                <FormSelect2
-                                    label="Month"
-                                    name="month"
-                                    control={control}
-                                    options={monthData?.map((d: any) => ({
+                                    options={models?.map((d: any) => ({
                                         label: d.name,
-                                        value: d.number,
+                                        value: d.id,
                                     }))}
-                                    error={errors.month?.message as string || undefined}
-                                    placeholder="Select Month"
+                                    error={errors.modelId?.message as string || undefined}
+                                    placeholder="Select Model"
                                 />
                             ) :
                                 <div className="flex items-center">
                                     <Loader2 className="w-4 h-4 animate-spin" />
-                                    <p>Loading months...</p>
-                                </div>}
-                            {yearData ? (
-                                <FormSelect2
-                                    label="Year"
-                                    name="year"
-                                    control={control}
-                                    options={yearData?.map((d: any) => ({
-                                        label: d.name,
-                                        value: d.number,
-                                    }))}
-                                    error={errors.year?.message as string || undefined}
-                                    placeholder="Select Year"
-                                />
-                            ) :
-                                <div className="flex items-center">
-                                    <Loader2 className="w-4 h-4 animate-spin" />
-                                    <p>Loading years...</p>
+                                    <p>Loading models...</p>
                                 </div>}
 
                             <InputLabel
-                                label="Qty"
+                                label="Quantity"
                                 name="quantity"
                                 type="number"
                                 required
-                                placeholder="Enter Qty"
+                                placeholder="Enter Quantity"
                                 register={register("quantity", { valueAsNumber: true })}
-                                error={errors.qty as any}
+                                error={errors.quantity as any}
                             />
 
                             <Button

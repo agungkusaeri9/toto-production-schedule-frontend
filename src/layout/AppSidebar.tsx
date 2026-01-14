@@ -72,20 +72,21 @@ const AppSidebar: React.FC = () => {
     },
     {
       icon: <ListTree />,
-      name: "Process List",
-      path: "/process-list-master",
-      requiresAuth: false,
+      name: "Production Timeline",
+      subItems: [
+        { name: "By Model", path: "/production-timeline", pro: false },
+      ],
+      requiresAuth: true,
       roles: ["admin"],
     },
     {
       icon: <FolderTree />,
       name: "Master Data",
       subItems: [
-        { name: "Process", path: "/processes", pro: false },
-        { name: "Customer", path: "/customers", pro: false },
+        { name: "Models", path: "/models", pro: false },
         { name: "Parts", path: "/parts", pro: false },
-        { name: "User", path: "/users", pro: false },
-        { name: "Settings", path: "/setting", pro: false }
+        { name: "Work Centers", path: "/work-centers", pro: false },
+        { name: "Users", path: "/users", pro: false },
 
       ],
       requiresAuth: true,

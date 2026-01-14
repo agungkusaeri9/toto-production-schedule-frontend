@@ -2,93 +2,90 @@
 import React, { Suspense } from "react";
 import ButtonLink from "@/components/ui/button/ButtonLink";
 import Breadcrumb from "@/components/common/Breadcrumb";
+import { confirmDelete } from "@/utils/confirm";
+import Button from "@/components/ui/button/Button";
 import DataTable from "@/components/common/DataTable";
 import Loading from "@/components/common/Loading";
-import Button from "@/components/ui/button/Button";
-import { confirmDelete } from "@/utils/confirm";
 import toast from "react-hot-toast";
-import { numberFormat } from "@/utils/numberFormat";
 import { useFetchData } from "@/hooks/useFetchData";
-import ScheduleService from "@/services/ScheduleService";
 import { useDeleteData } from "@/hooks/useDeleteData";
-import { Schedule } from "@/types/schedule";
+import ModelService from "@/services/ModelService";
+import { Model } from "@/types/model";
 
-function ScheduleListContent() {
-    const { data: schedules, isLoading } = useFetchData(ScheduleService.get, "schedules");
-    const { mutate: deleteSchedule, isPending } = useDeleteData(ScheduleService.remove, ["schedules"]);
+function ModelListContent() {
+
+    const { data: models, isLoading } = useFetchData(ModelService.getWithoutPagination, "models");
+    const { mutate: remove } = useDeleteData(ModelService.remove, ["models"]);
 
     const handleDelete = async (id: number) => {
         const confirmed = await confirmDelete();
         if (confirmed) {
-            deleteSchedule(id, {
-                onSuccess: () => {
-                    toast.success("Schedule deleted successfully.");
-                }
-            });
+            remove(id);
+            toast.success("Model deleted successfully.");
         }
     };
 
     const columns = [
         {
-            header: "Model Name",
-            accessorKey: "modelName",
+            header: "Name",
+            accessorKey: "name",
         },
         {
-            header: "Quantity",
-            accessorKey: "quantity",
-            cell: (item: Schedule) => numberFormat(item.quantity) || '-',
-        },
-        {
-            header: "Created At",
-            accessorKey: "createdAt",
-            cell: (item: Schedule) => item.createdAt ? new Date(item.createdAt).toLocaleString() : '-',
+            header: "Created",
+            accessorKey: "created",
+            cell: (item: Model) => item.created ? item.created.split('T')[0] : '-',
         },
         {
             header: "Action",
             accessorKey: "id",
-            cell: (item: Schedule) => (
+            cell: (item: Model) => (
                 <div className="flex items-center gap-2">
                     <ButtonLink
-                        href={`/schedules/${item.id}`}
+                        href={`/models/${item.id}`}
                         variant='warning'
                         size='xs'
                     >
-                        Show
+                        Detail
+                    </ButtonLink>
+                    <ButtonLink
+                        href={`/models/${item.id}/edit`}
+                        variant='info'
+                        size='xs'
+                    >
+                        Edit
                     </ButtonLink>
                     <Button
                         onClick={() => handleDelete(item.id)}
                         variant='danger'
                         size='xs'
-                        disabled={isPending}
-                        loading={isPending}
                     >
                         Delete
                     </Button>
-                </div >
+                </div>
             ),
         },
     ];
 
-    if (!schedules && isLoading) {
-        return <Loading />;
+    if (!models && isLoading) {
+        return <Loading />
     }
 
     return (
         <div>
-            <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Schedules', href: '/schedules' }]} />
+            <Breadcrumb items={[{ label: 'Dashboard', href: '/dashboard' }, { label: 'Models', href: '/models' }]} />
             <div className="space-y-6">
                 <div className="flex justify-end mb-4">
-                    <ButtonLink size='sm' href="/schedules/create">Create Schedule</ButtonLink>
+                    <ButtonLink size='xs' href="/models/create">Create Model</ButtonLink>
                 </div>
                 <DataTable
-                    title="Schedules"
+                    title="Model List"
                     columns={columns}
-                    data={schedules || []}
+                    data={models || []}
                     isLoading={false}
                     pagination={{
                         currentPage: 1,
                         totalPages: 1,
-                        totalItems: schedules?.length || 0,
+                        totalItems: models?.length || 0,
                         itemsPerPage: 10,
                         onPageChange: () => { },
                         onLimitChange: () => { },
@@ -96,7 +93,7 @@ function ScheduleListContent() {
                     search={{
                         value: "",
                         onChange: () => { },
-                        placeholder: "Search schedule...",
+                        placeholder: "Search Model...",
                     }}
                 />
             </div>
@@ -107,7 +104,7 @@ function ScheduleListContent() {
 export default function Page() {
     return (
         <Suspense fallback={<Loading />}>
-            <ScheduleListContent />
+            <ModelListContent />
         </Suspense>
     );
 }
