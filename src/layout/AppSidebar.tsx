@@ -64,8 +64,11 @@ const AppSidebar: React.FC = () => {
     {
       icon: <CalendarDays />,
       name: "Schedules",
-      path: "/schedules",
-      requiresAuth: false,
+      subItems: [
+        { name: "List Schedules", path: "/schedules", pro: false },
+        { name: "Schedule Details", path: "/schedule-details", pro: false },
+      ],
+      requiresAuth: true,
       roles: ["admin"],
     },
     {
@@ -73,6 +76,7 @@ const AppSidebar: React.FC = () => {
       name: "Production Timeline",
       subItems: [
         { name: "By Model", path: "/production-timeline", pro: false },
+        { name: "By Work Center", path: "/work-center-timeline", pro: false },
       ],
       requiresAuth: true,
       roles: ["admin"],

@@ -1,4 +1,4 @@
-import { TimelineData } from "@/types/productionTimeline";
+import { TimelineData, WorkCenterTimelineData } from "@/types/productionTimeline";
 import api from "@/utils/api";
 
 const get = async (): Promise<TimelineData> => {
@@ -6,5 +6,11 @@ const get = async (): Promise<TimelineData> => {
   return response.data;
 };
 
-const ProductionTimelineService = { get };
+const getByWorkCenter = async (): Promise<WorkCenterTimelineData> => {
+  const response = await api.get<WorkCenterTimelineData>("/ScheduleDetail/work_centers");
+  return response.data;
+};
+
+const ProductionTimelineService = { get, getByWorkCenter };
 export default ProductionTimelineService;
+
